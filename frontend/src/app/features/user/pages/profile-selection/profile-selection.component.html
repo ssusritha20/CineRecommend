@@ -1,0 +1,36 @@
+<div class="profile-gate-container">
+  <div class="profile-selection-header">
+    <h1 class="gradient-text">Who's watching?</h1>
+  </div>
+  
+  <div class="profiles-list" *ngIf="!loading">
+    <div class="profile-card" *ngFor="let profile of profiles" (click)="selectProfile(profile)">
+      <div class="avatar-wrapper glass-panel">
+        <img [src]="profile.avatar" [alt]="profile.name">
+        <div class="lock-overlay" *ngIf="profile.isLocked">
+            <span class="icon">🔒</span>
+        </div>
+      </div>
+      <div class="profile-name">{{ profile.name }}</div>
+      <div class="last-watched-preview" *ngIf="profile.continueWatching?.length">
+         <span>Last watched:</span> {{ profile.continueWatching[0].movie?.title }}
+      </div>
+    </div>
+
+    <!-- Add Profile Button -->
+    <div class="profile-card add-profile" (click)="manageProfiles()">
+      <div class="avatar-wrapper glass-panel">
+        <span class="plus-icon">+</span>
+      </div>
+      <div class="profile-name">Add Profile</div>
+    </div>
+  </div>
+
+  <div class="loading-spinner" *ngIf="loading">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="manage-button-container">
+    <button class="manage-profiles-btn" (click)="manageProfiles()">Manage Profiles</button>
+  </div>
+</div>

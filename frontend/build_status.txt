@@ -1,0 +1,61 @@
+﻿node.exe : - 
+Building...
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (- Building...   
+ :String) [], Remot    
+eException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+chunk-73G6MJ7F.js     | -             | 237.19 kB |                63.70 kB
+polyfills-FFHMD2TL.js | polyfills     |  33.71 kB |                11.02 kB
+chunk-FLJNQSMD.js     | -             |  10.96 kB |                 3.02 kB
+styles-3XDZ43OO.css   | styles        |   1.91 kB |               683 bytes
+main-BBQDWGXM.js      | main          |   1.33 kB |               633 bytes
+
+                      | Initial total | 285.09 kB |                79.03 kB
+
+Lazy chunk files      | Names         |  Raw size | Estimated transfer size
+chunk-NETPCETW.js     | -             |  26.26 kB |                 5.81 kB
+chunk-AUUVHJ4C.js     | movies-module |  18.87 kB |                 4.64 kB
+chunk-SYDLH5SR.js     | user-module   |   8.06 kB |                 1.68 kB
+
+Output location: C:\Users\sswam\movie-recommendation-system\frontend\dist\movie-frontend
+
+Application bundle generation complete. [7.095 seconds]
+
+Γû▓ [WARNING] src/app/f
+eatures/movies/componen
+ts/movie-detail/movie-d
+etail.component.css 
+exceeded maximum 
+budget. Budget 2.00 kB 
+was not met by 1.57 kB 
+with a total of 3.57 
+kB.
+
+
+Γû▓ [WARNING] src/app/s
+hared/components/movie-
+card/movie-card.compone
+nt.css exceeded 
+maximum budget. Budget 
+2.00 kB was not met by 
+399 bytes with a total 
+of 2.39 kB.
+
+

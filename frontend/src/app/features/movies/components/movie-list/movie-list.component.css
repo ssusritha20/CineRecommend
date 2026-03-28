@@ -1,0 +1,41 @@
+.movie-list-container {
+  padding-bottom: 4rem;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.02);
+}
+.search-icon {
+  font-size: 1.2rem;
+  opacity: 0.5;
+  margin-right: 10px;
+}
+.search-bar input {
+  flex: 1;
+  padding: 0.8rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+}
+.search-bar input:focus {
+  outline: none;
+}
+.search-bar input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+.search-bar button {
+  border-radius: 100px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.5rem;
+}

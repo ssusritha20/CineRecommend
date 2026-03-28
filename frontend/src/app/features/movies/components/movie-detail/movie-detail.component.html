@@ -1,0 +1,59 @@
+<div class="detail-container glass-panel" *ngIf="movie">
+  <div class="backdrop" [style.backgroundImage]="'url(' + (movie.posterUrl || '') + ')'"></div>
+  <div class="content-overlay">
+    <div class="poster">
+      <img [src]="movie.posterUrl || 'https://via.placeholder.com/400x600?text=No+Poster'" alt="{{ movie.title }}">
+    </div>
+    <div class="info">
+      <h2>{{ movie.title }} <span class="year">({{ movie.releaseYear }})</span></h2>
+      <p class="director">Directed by <span>{{ movie.director || 'Unknown' }}</span></p>
+      
+      <div class="meta">
+        <div class="rating-box glass-panel">
+          <span class="star">★</span> <span class="score">{{ movie.averageRating?.toFixed(1) || 'N/A' }}</span> <span class="max">/ 10</span>
+        </div>
+        <div class="genres-box glass-panel">
+          {{ movie.genres?.join(' • ') }}
+        </div>
+      </div>
+      
+      <div class="actions">
+        <button class="play-btn" (click)="playMovie()" *ngIf="movie.videoUrl">
+          <span class="icon">▶</span> Play Trailer
+        </button>
+        <button class="fav-btn" [class.active]="checkFavorite(movie._id)" (click)="toggleFavorite(movie._id)">
+          <span class="icon">{{ checkFavorite(movie._id) ? '♥' : '♡' }}</span>
+          {{ checkFavorite(movie._id) ? 'Remove from Favorites' : 'Add to Favorites' }}
+        </button>
+      </div>
+
+      <div class="description glass-panel">
+        <h3>Storyline</h3>
+        <p>{{ movie.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Advanced Video Player -->
+  <app-video-player
+    *ngIf="isPlaying"
+    [videoId]="movie._id"
+    [videoUrl]="movie.videoUrl"
+    [title]="movie.title"
+    (close)="stopMovie()">
+  </app-video-player>
+</div>
+
+<div class="similar-movies-section" *ngIf="similarMovies.length > 0">
+  <h3 class="gradient-text">Similar Movies</h3>
+  <p class="subtitle">Because you're viewing {{ movie?.title }}</p>
+  <div class="flex-scroll">
+    <app-movie-card 
+      *ngFor="let m of similarMovies" 
+      [movie]="m"
+      class="rec-card"
+      [isFavorite]="checkFavorite(m._id)"
+      (favoriteToggle)="toggleFavorite($event)">
+    </app-movie-card>
+  </div>
+</div>

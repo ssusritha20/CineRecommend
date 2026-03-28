@@ -1,0 +1,42 @@
+.recommendations-container {
+  margin-bottom: 5rem;
+  position: relative;
+}
+.section-header {
+  margin-bottom: 2rem;
+}
+h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.gradient-text {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+.flex-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding: 1rem 0 2rem 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+/* hide scrollbar for clean design */
+.flex-scroll::-webkit-scrollbar {
+  display: none;
+}
+.flex-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.rec-card {
+  min-width: 260px;
+  width: 260px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,132 @@
+.profile-gate-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  animation: fadeIn 0.8s ease;
+}
+
+.profile-selection-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-heading);
+}
+
+.profiles-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.avatar-wrapper {
+  width: 15vw;
+  max-width: 180px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  transition: border 0.2s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card:hover .avatar-wrapper {
+  transform: scale(1.05);
+  border: 3px solid #0071eb;
+  box-shadow: 0 0 20px rgba(0, 113, 235, 0.4);
+}
+
+.profile-name {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.profile-card:hover .profile-name {
+  color: white;
+}
+
+.last-watched-preview {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #888;
+  max-width: 15vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.last-watched-preview span {
+  color: #0071eb;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.lock-overlay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+
+.add-profile .avatar-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-profile .plus-icon {
+  font-size: 4rem;
+  color: var(--text-secondary);
+}
+
+.add-profile:hover .plus-icon {
+  color: white;
+}
+
+.manage-button-container {
+  margin-top: 5rem;
+}
+
+.manage-profiles-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.manage-profiles-btn:hover {
+  color: white;
+  border-color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.1); }
+  to { opacity: 1; transform: scale(1); }
+}

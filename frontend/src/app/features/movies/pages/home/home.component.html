@@ -1,0 +1,110 @@
+<div class="home-container" *ngIf="allMovies && allMovies.length > 0; else loading">
+  
+  <!-- Hero Banner -->
+  <div class="hero-banner" *ngIf="featuredMovie" [style.backgroundImage]="'url(' + (featuredMovie.bannerUrl || featuredMovie.posterUrl) + ')'">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge" *ngIf="featuredMovie.progress > 0">Resume Watching</div>
+      <h1 class="hero-title">{{ featuredMovie.title }}</h1>
+      <p class="hero-desc">{{ featuredMovie.description }}</p>
+      <div class="hero-buttons">
+        <button class="btn-play" [routerLink]="['/movies', featuredMovie._id]"><span class="icon">▶</span> Play</button>
+        <button class="btn-info" [routerLink]="['/movies', featuredMovie._id]"><span class="icon">ⓘ</span> More Info</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rows -->
+  <div class="rows-container">
+    <app-movie-row 
+      title="Trending Now" 
+      [movies]="trendingMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="personalizedMovies.length > 0"
+      title="Handpicked for {{ activeProfile?.name }}" 
+      [movies]="personalizedMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="continueWatchingMovies.length > 0"
+      title="Continue Watching for {{ activeProfile?.name }}" 
+      [movies]="continueWatchingMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="myListMovies.length > 0"
+      title="My List" 
+      [movies]="myListMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      title="Action & Adventure" 
+      [movies]="actionMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="teluguMovies.length > 0"
+      title="Telugu Blockbusters" 
+      [movies]="teluguMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="hindiMovies.length > 0"
+      title="Top Hindi Picks" 
+      [movies]="hindiMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="koreanMovies.length > 0"
+      title="K-Dramas & Thrillers" 
+      [movies]="koreanMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      title="Sci-Fi & Animation Marvels" 
+      [movies]="sciFiMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="japaneseMovies.length > 0"
+      title="Japanese Anime & Cinema" 
+      [movies]="japaneseMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+
+    <app-movie-row 
+      *ngIf="tamilMovies.length > 0"
+      title="Tamil Super Hits" 
+      [movies]="tamilMovies" 
+      [userFavorites]="userFavorites" 
+      (favoriteToggle)="onToggleFavorite($event)">
+    </app-movie-row>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-screen">
+    <app-loader></app-loader>
+  </div>
+</ng-template>

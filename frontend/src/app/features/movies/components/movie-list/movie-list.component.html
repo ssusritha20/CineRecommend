@@ -1,0 +1,16 @@
+<div class="movie-list-container">
+  <div class="search-bar glass-panel">
+    <span class="search-icon">🔍</span>
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search for movies, directors..." (keyup.enter)="onSearch()">
+    <button class="btn-primary" (click)="onSearch()">Search</button>
+  </div>
+  
+  <div class="grid">
+    <app-movie-card 
+      *ngFor="let movie of movies" 
+      [movie]="movie"
+      [isFavorite]="checkFavorite(movie._id)"
+      (favoriteToggle)="toggleFavorite($event)">
+    </app-movie-card>
+  </div>
+</div>

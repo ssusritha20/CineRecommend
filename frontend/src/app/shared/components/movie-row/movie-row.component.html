@@ -1,0 +1,19 @@
+<div class="row-container" *ngIf="movies && movies.length > 0">
+  <h2 class="row-title">{{ title }}</h2>
+  
+  <div class="slider-wrapper">
+    <button class="handle left-handle" (click)="scrollLeft(movieRow)">&#8249;</button>
+    
+    <div class="row-content" #movieRow>
+      <app-movie-card 
+        *ngFor="let movie of movies" 
+        [movie]="movie"
+        class="slider-item"
+        [isFavorite]="checkFavorite(movie._id)"
+        (favoriteToggle)="onToggleFavorite($event)">
+      </app-movie-card>
+    </div>
+    
+    <button class="handle right-handle" (click)="scrollRight(movieRow)">&#8250;</button>
+  </div>
+</div>

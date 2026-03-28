@@ -1,0 +1,15 @@
+<div class="recommendations-container" *ngIf="recommendations.length > 0">
+  <div class="section-header">
+    <h3 class="gradient-text">{{ type === 'top-rated' ? '🔥 Top Rated Masterpieces' : '✨ Recommended For You' }}</h3>
+    <p class="subtitle">{{ type === 'top-rated' ? 'Explore the highest rated films.' : 'Based on your favorite genres.' }}</p>
+  </div>
+  <div class="flex-scroll">
+    <app-movie-card 
+      *ngFor="let movie of recommendations" 
+      [movie]="movie"
+      class="rec-card"
+      [isFavorite]="checkFavorite(movie._id)"
+      (favoriteToggle)="toggleFavorite($event)">
+    </app-movie-card>
+  </div>
+</div>

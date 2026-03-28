@@ -1,0 +1,71 @@
+<div class="player-container" (mousemove)="onMouseMove()">
+  <!-- Video Brightness Overlay -->
+  <div class="brightness-overlay" [style.opacity]="(100 - brightness) / 100"></div>
+
+  <!-- Video Iframe -->
+  <iframe 
+    *ngIf="safeUrl"
+    [src]="safeUrl"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    class="video-frame">
+  </iframe>
+
+  <!-- Top Controls (Back Button) -->
+  <div class="player-top-controls" [class.hidden]="!showControls">
+    <button class="back-button" (click)="goBack()">
+        <span class="icon">⬅</span> Back
+    </button>
+    <h2 class="playing-title">{{ title }}</h2>
+  </div>
+
+  <!-- Bottom Controls Bar -->
+  <div class="player-bottom-controls" [class.hidden]="!showControls">
+    <div class="progress-container">
+      <div class="progress-bar" [style.width.%]="progress"></div>
+      <div class="progress-knob" [style.left.%]="progress"></div>
+    </div>
+    
+    <div class="controls-bar">
+      <div class="controls-left">
+        <button class="control-btn" (click)="togglePlay()">
+            <span class="icon">{{ isPlaying ? '⏸' : '▶' }}</span>
+        </button>
+        <button class="control-btn" (click)="skip(-10)">
+            <span class="icon">↺ 10</span>
+        </button>
+        <button class="control-btn" (click)="skip(10)">
+            <span class="icon">10 ↻</span>
+        </button>
+
+        <!-- Volume -->
+        <div class="volume-control">
+          <button (click)="reduceVolume()">-</button>
+          <span class="value">Vol: {{ volume }}%</span>
+          <button (click)="increaseVolume()">+</button>
+        </div>
+      </div>
+
+      <div class="controls-right">
+        <!-- Brightness -->
+        <div class="brightness-control">
+          <button (click)="reduceBrightness()">-</button>
+          <span class="value">Lux: {{ brightness }}%</span>
+          <button (click)="increaseBrightness()">+</button>
+        </div>
+
+        <div class="subtitle-dropdown">
+          <select [(ngModel)]="selectedSubtitle">
+              <option *ngFor="let sub of subtitles" [value]="sub">{{ sub }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Close Button -->
+  <button class="close-player" (click)="goBack()" [class.hidden]="!showControls">
+      <span class="icon">✕</span>
+  </button>
+</div>

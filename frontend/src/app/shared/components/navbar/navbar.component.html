@@ -1,0 +1,52 @@
+<nav class="navbar glass-panel">
+  <div class="nav-left">
+    <div class="logo">
+      <a routerLink="/movies">CineRecommend</a>
+    </div>
+    <div class="nav-primary-links" *ngIf="user$ | async">
+      <a routerLink="/movies" routerLinkActive="active">Home</a>
+      <a routerLink="/movies" [queryParams]="{type: 'series'}">TV Shows</a>
+      <a routerLink="/movies" [queryParams]="{type: 'movie'}">Movies</a>
+      <a routerLink="/movies" [queryParams]="{list: 'my'}">My List</a>
+      <a routerLink="/movies">Categories</a>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <div class="search-box" *ngIf="user$ | async">
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (keyup.enter)="onSearch()"
+        placeholder="Titles, people, genres"
+        class="search-input">
+      <i class="search-icon" (click)="onSearch()">🔍</i>
+    </div>
+
+    <div class="nav-user-controls" *ngIf="user$ | async as user; else guest">
+      <div class="profile-dropdown-container" (mouseenter)="showProfileMenu = true" (mouseleave)="showProfileMenu = false">
+        <div class="active-profile-trigger">
+          <img [src]="(activeProfile$ | async)?.avatar || 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'" alt="Profile" class="nav-avatar">
+          <span class="caret">▼</span>
+        </div>
+        
+        <div class="profile-menu glass-panel" *ngIf="showProfileMenu">
+          <div class="profile-item" (click)="switchProfile()">
+            <i class="icon">👤</i> Switch Profile
+          </div>
+          <div class="menu-divider"></div>
+          <div class="profile-item logout" (click)="logout()">
+            Sign Out of CineRecommend
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #guest>
+      <div class="guest-links">
+        <a routerLink="/user/login" class="login-link">Login</a>
+        <a routerLink="/user/register" class="btn-netflix">Join Now</a>
+      </div>
+    </ng-template>
+  </div>
+</nav>

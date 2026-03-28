@@ -1,0 +1,251 @@
+.detail-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  min-height: 600px;
+}
+.backdrop {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(0.3);
+  opacity: 0.6;
+  z-index: 0;
+}
+.content-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 4rem;
+  padding: 4rem;
+  background: linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 100%);
+}
+@media (max-width: 768px) {
+  .content-overlay {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+  }
+}
+.poster img {
+  border-radius: 12px;
+  width: 350px;
+  max-width: 100%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border: 1px solid var(--glass-border);
+}
+.info {
+  flex: 1;
+}
+.info h2 {
+  font-size: 3.5rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.year {
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+.director {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.director span {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.rating-box, .genres-box {
+  padding: 0.8rem 1.5rem;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rating-box {
+  font-size: 1.2rem;
+}
+.star { color: #f59e0b; }
+.score { font-weight: bold; color: white; }
+.max { color: var(--text-secondary); font-size: 0.9rem; }
+.genres-box {
+  color: var(--accent-primary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.play-btn, .fav-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+}
+
+.play-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.play-btn:hover {
+  background: #f40612;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+}
+
+.fav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.fav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fav-btn.active {
+  color: #e50914;
+  border-color: #e50914;
+}
+
+/* Video Player Overlay */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(15px);
+  animation: fadeIn 0.3s ease;
+}
+
+.video-container {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.close-video {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(229, 9, 20, 0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.close-video:hover {
+  background: #e50914;
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.icon {
+  font-size: 1.4rem;
+}
+.description {
+  padding: 2rem;
+  background: rgba(0,0,0,0.4);
+}
+.description h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+.description p {
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Similar Movies Section */
+.similar-movies-section {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.similar-movies-section h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.gradient-text {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.flex-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding: 1rem 0 2rem 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.flex-scroll::-webkit-scrollbar {
+  display: none;
+}
+.flex-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.rec-card {
+  min-width: 260px;
+  width: 260px;
+  flex-shrink: 0;
+}
